@@ -1,0 +1,6 @@
+---
+- name: Create Test User Role
+  win_user:
+    name: AnsibleTest1
+    password: Password01?
+    state: present
