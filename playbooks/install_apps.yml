@@ -1,0 +1,14 @@
+---
+- hosts: all
+  tasks:
+    - name: Install 7-Zip
+      win_package:
+        path: C:\Tools\7z1900-x64.exe
+        product_id: 7-Zip
+        arguments: /S
+        state: present
+    - name: Install LAPS
+      win_package:
+        path: C:\Tools\LAPS.x64.msi
+        product_id: '{EA8CB806-C109-4700-96B4-F1F268E5036C}'
+        state: present
