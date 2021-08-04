@@ -1,0 +1,11 @@
+---
+- name: Create CMP Ident File
+  hosts: "{{ morpheus['server']['internalIp'] }}"
+  tasks:      
+  - name: Write hosts
+    debug:
+      msg: "{{ morpheus['server']['internalIp'] }}"
+  - name: Delete file
+    win_file:
+      path: c:\cmp_ident.txt
+      state: absent
