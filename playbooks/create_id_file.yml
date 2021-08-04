@@ -1,0 +1,14 @@
+---
+- name: Create CMP Ident File
+  hosts: cmp-dc1.localdomain
+  tasks:
+  - name: Create empty file
+    win_file:
+      path: c:\cmp_ident.txt
+      state: touch
+
+  - name: Add data to file
+    win_lineinfile:
+      path: c:\cmp_ident.txt
+      line: "{{ morpheus['server']['apiKey'] }}"
+      state: present
