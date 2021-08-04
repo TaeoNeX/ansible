@@ -1,0 +1,16 @@
+---
+- name: Create user
+  hosts: all
+  gather_facts: true
+  tasks:
+  - name: Debug
+    debug: "msg=Running {{ morpheus['customOptions']['first_name'] }}"
+    
+  - name: Create
+    when: ansible_windows_domain_role == "Primary domain controller"
+    win_domain_user:
+      name: "{{ morpheus['customOptions']['first_name'] }} {{ morpheus['customOptions']['last_name']}}"
+      firstname: "{{ morpheus['customOptions']['first_name'] }}"
+      surname: "{{ morpheus['customOptions']['last_name'] }}"
+      password: "{{ morpheus['customOptions']['password'] }}"
+      state: present
