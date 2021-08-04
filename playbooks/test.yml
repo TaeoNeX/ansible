@@ -1,0 +1,9 @@
+---
+- hosts: "{{ ansible_limit | default(omit) }}"
+  tasks:
+    - debug:
+        msg: "{{ dns_servers | ipaddr('192.168.0.0/24')}}"
+      vars: 
+        dns_servers:
+          - 10.0.0.1
+          - 192.168.0.1
